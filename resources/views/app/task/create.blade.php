@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="text-right">
+                        <div class="d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary">Criar Nova Tarefa</button>
                         </div>
                     </form>

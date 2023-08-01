@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewTaskMail;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class TaskController extends Controller
 {
     public function index()
     {
-        return "Olá " . Auth::user()->name . ", chegamos até aqui!";
+        $tasks = Task::all();
+
+        return view('app.task.index', ['tasks' => $tasks]);
     }
 
     public function create()
@@ -39,12 +43,13 @@ class TaskController extends Controller
         $task->deadline_date = $request->get('deadline_date');
         $task->save();
 
+        Mail::to(Auth::user()->email)->send(new NewTaskMail($task));
         return redirect()->route('task.show', $task->id);
     }
 
     public function show(Task $task)
     {
-        dd($task->getAttributes());
+        return view('app.task.show', ['task' => $task]);
     }
 
     public function edit(Task $task)

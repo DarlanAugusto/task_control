@@ -34,7 +34,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                              Tarefas
+                            </a>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="{{ route('task.index') }}">Listar</a>
+                              <a class="dropdown-item" href="{{ route('task.create') }}">Nova Tarefa</a>
+                            </div>
+                          </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
