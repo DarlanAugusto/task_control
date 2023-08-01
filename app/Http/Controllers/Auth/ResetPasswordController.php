@@ -27,4 +27,24 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    protected function rules()
+    {
+        return [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:4',
+        ];
+    }
+
+    protected function validationErrorMessages()
+    {
+        return [
+            'token.required' => 'Token inválido',
+            'email.required' => 'E-mail inválido',
+            'password.min' => 'A senha deve conter no mínimo 4 caracteres',
+            'password.required' => 'O campo senha é obrigatório',
+            'password.confirmed' => 'As senhas devem ser iguais'
+        ];
+    }
 }
