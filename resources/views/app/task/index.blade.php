@@ -5,7 +5,36 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><i class="bi bi-list"></i> Tarefas</div>
+                <div class="card-header">
+                    <div class="d-flex justify-content-between">
+                        <span>
+                            <i class="bi bi-list"></i> Tarefas
+                        </span>
+                        <nav aria-label="...">
+                            <ul class="pagination pagination-sm m-0">
+                                <li class="page-item @if($tasks->currentPage() == 1) disabled @endif" title="Primeira página (1)">
+                                    <a class="page-link" href="{{ $tasks->toArray()['first_page_url'] }}">&laquo;</a>
+                                </li>
+                                @php
+                                    $page = 1;
+                                    if($tasks->currentPage() >= 3) {
+                                        $page = $tasks->currentPage() - 1;
+                                    }
+                                @endphp
+                                @for ($i = $page; $i <= $tasks->lastPage(); $i++)
+                                    @if ($i <= ($page + 2))
+                                        <li class="page-item @if($i == $tasks->currentPage()) active @endif" aria-current="page" title="Página {{ $i }} de {{ $tasks->lastPage() }}">
+                                            <a class="page-link" href="{{ $tasks->url($i) }}">{{ $i }}</a>
+                                        </li>
+                                    @endif
+                                @endfor
+                                <li class="page-item @if($tasks->currentPage() == $tasks->lastPage()) disabled @endif" title="Última página ({{ $tasks->lastPage() }})">
+                                    <a class="page-link" href="{{ $tasks->url($tasks->lastPage()) }}">&raquo;</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
