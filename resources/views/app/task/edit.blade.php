@@ -42,9 +42,31 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="d-flex justify-content-between">
-                            <button type="submit" class="btn btn-warning">Salvar Tarefa</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#alterTask">Salvar Tarefa</button>
                         </div>
+
+                        <div class="modal fade" id="alterTask" tabindex="-1" aria-labelledby="alterTaskLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="alterTaskLabel">Atenção!</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <p>Deseja realmente aplicar estas alterações ?</p>
+                                  <p class="text-muted font-italic">Um e-mail de notificação será enviado para você.</p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                                  <button type="submit" class="btn btn-warning">Confirmar</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                     </form>
                 </div>
             </div>
