@@ -12,7 +12,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::where('user_id', Auth::user()->id)->get();
 
         return view('app.task.index', ['tasks' => $tasks]);
     }
@@ -39,6 +39,7 @@ class TaskController extends Controller
         $request->validate($rules, $feedbacks);
 
         $task = new Task();
+        $task->user_id = Auth::user()->id;
         $task->task = $request->get('task');
         $task->deadline_date = $request->get('deadline_date');
         $task->save();
