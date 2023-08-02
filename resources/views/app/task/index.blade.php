@@ -50,7 +50,9 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Tarefa</th>
                                     <th scope="col">Data Limite</th>
-                                    <th scope="col" class="text-center">&nbsp;</th>
+                                    <th scope="col" class="text-center">
+                                        <i class="bi bi-three-dots"></i>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,15 +63,13 @@
 
                                             {{ $task->task }}</td>
                                         <td>{{ date('d/m/Y', strtotime($task->deadline_date)) }}</td>
-                                        <td>
-                                            <div class="d-flex justify-content-between">
-                                                <a href="#" class="text-decoration-none p-1 text-muted">
-                                                    <i class="bi bi-pencil-square"></i>
-                                                </a>
-                                                <a href="#" class="text-decoration-none p-1 text-danger">
-                                                    <i class="bi bi-trash3"></i>
-                                                </a>
-                                            </div>
+                                        <td align="center">
+                                            <a href="{{ route('task.edit', $task->id) }}" class="text-decoration-none p-1 text-muted">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                            <a href="#" class="text-decoration-none p-1 text-danger">
+                                                <i class="bi bi-trash3"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
