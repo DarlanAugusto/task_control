@@ -26,7 +26,6 @@ Auth::routes(['verify' => true]);
 Route::middleware(['auth', 'verified'])->group(function() {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::resource('/task', TaskController::class);
 
     Route::get('/test-message', function() {
@@ -36,3 +35,5 @@ Route::middleware(['auth', 'verified'])->group(function() {
     });
 
 });
+
+Route::get('/access-denied', [HomeController::class, 'accessDenied'])->name('access.denied');

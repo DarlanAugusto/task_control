@@ -56,11 +56,19 @@ class TaskController extends Controller
 
     public function edit(Task $task)
     {
+        if(Auth::user()->id != $task->user_id) {
+            return redirect()->route('access.denied');
+        }
+
         return view('app.task.edit', ['task' => $task]);
     }
 
     public function update(Request $request, Task $task)
     {
+        if(Auth::user()->id != $task->user_id) {
+            return redirect()->route('access.denied');
+        }
+
         $previousTask = $task->getAttributes();
         $rules = [
             'task' => ['required', 'min:3'],

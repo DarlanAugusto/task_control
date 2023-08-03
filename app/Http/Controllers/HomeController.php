@@ -10,4 +10,8 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function accessDenied() {
+        return view('access-denied');
+    }
 }
