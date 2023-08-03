@@ -5,7 +5,18 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><i class="bi bi-clipboard-plus"></i> {{ __('Nova Tarefa') }}</div>
+                <div class="card-header">
+                    <div class="d-flex justify-content-between">
+                        <span>
+                            <i class="bi bi-clipboard-plus"></i> {{ __('Nova Tarefa') }}
+                        </span>
+
+                        <a href="{{ route('task.index') }}" class="text-decoration-none ml-3" title="Listar tarefas">
+                            <i class="bi bi-list"></i>
+                        </a>
+                    </div>
+
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))

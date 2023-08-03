@@ -5,7 +5,22 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><i class="bi bi-clipboard-"></i> Editando - {{ $task->task }}</div>
+                <div class="card-header">
+                    <div class="d-flex justify-content-between">
+                        <span>
+                            <i class="bi bi-clipboard-"></i> Editando - {{ $task->task }}
+                        </span>
+
+                        <div class="d-flex justify-content-between aling-items-center">
+                            <a href="{{ route('task.create') }}" class="text-decoration-none ml-3" title="Nova Tarefa">
+                                <i class="bi bi-clipboard-plus"></i>
+                            </a>
+                            <a href="{{ route('task.index') }}" class="text-decoration-none ml-3" title="Listar Tarefas">
+                                <i class="bi bi-list"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
