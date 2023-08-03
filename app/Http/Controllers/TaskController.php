@@ -110,6 +110,12 @@ class TaskController extends Controller
 
     public function export($extension)
     {
+        $suportedExtensions = ['xlsx', 'csv', 'pdf'];
+
+        if(!in_array($extension, $suportedExtensions)) {
+            return redirect()->route('task.index');
+        }
+
         return Excel::download(new TasksExport, 'tasks_' . date('YmdHis') . '.' . $extension);
     }
 }
