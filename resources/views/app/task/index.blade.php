@@ -67,7 +67,7 @@
                                             <a href="{{ route('task.edit', $task->id) }}" class="text-decoration-none p-1 text-muted">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
-                                            <a href="#" class="text-decoration-none p-1 text-danger">
+                                            <a href="#" class="text-decoration-none p-1 text-danger" data-toggle="modal" data-target="#deleteTaskModal">
                                                 <i class="bi bi-trash3"></i>
                                             </a>
                                         </td>
@@ -83,4 +83,29 @@
         </div>
     </div>
 </div>
+
+    <div class="modal fade" id="deleteTaskModal" tabindex="-1" aria-labelledby="deleteTaskModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{ route('task.destroy', $task->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteTaskModalLabel">Atenção!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Deseja realmente remover <b>{{ $task->task }}</b>?</p>
+                        <p class="text-muted font-italic">Um e-mail de notificação será enviado para você.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger">Confirmar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection

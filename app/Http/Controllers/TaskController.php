@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\DestroyTaskMail;
 use App\Mail\NewTaskMail;
 use App\Mail\UpTaskMail;
 use App\Models\Task;
@@ -95,6 +96,13 @@ class TaskController extends Controller
 
     public function destroy(Task $task)
     {
-        //
+        if(Auth::user()->id != $task->user_id) {
+            return redirect()->route('access.denied');
+        }
+
+        $task->delete();
+        Mail::to(Auth::user()->email)->send(new DestroyTaskMail($task));
+
+        return redirect()->route('task.index');
     }
 }

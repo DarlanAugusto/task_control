@@ -22,10 +22,35 @@
                             Voltar
                         </a>
 
-                        <button type="button" class="btn btn-danger" disabled>
-                            <i class="bi bi-trash3"></i>
-                            Excluir Tarefa
-                        </button>
+                        <form action="{{ route('task.destroy', $task->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteTask">
+                                <i class="bi bi-trash3"></i>
+                                Excluir Tarefa
+                            </button>
+
+                            <div class="modal fade" id="deleteTask" tabindex="-1" aria-labelledby="deleteTaskLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteTaskLabel">Atenção!</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Deseja realmente remover <b>{{ $task->task }}</b>?</p>
+                                            <p class="text-muted font-italic">Um e-mail de notificação será enviado para você.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-danger">Confirmar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
