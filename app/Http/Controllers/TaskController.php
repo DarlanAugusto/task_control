@@ -108,8 +108,8 @@ class TaskController extends Controller
         return redirect()->route('task.index');
     }
 
-    public function export()
+    public function export($extension)
     {
-        return Excel::download(new TasksExport, 'tasks_' . date('YmdHis') . '.xlsx');
+        return Excel::download(new TasksExport, 'tasks_' . date('YmdHis') . '.' . $extension);
     }
 }

@@ -27,7 +27,7 @@ Route::middleware(['auth', 'verified'])->group(function() {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
-    Route::get('/task/export', [TaskController::class, 'export'])->name('task.export');
+    Route::get('/task/export/{extension}', [TaskController::class, 'export'])->name('task.export');
     Route::resource('/task', TaskController::class);
 
     Route::get('/test-message', function() {

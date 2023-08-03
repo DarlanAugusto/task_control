@@ -35,12 +35,21 @@
                                 </ul>
                             </nav>
 
-                            <a href="{{ route('task.create') }}" class="text-decoration-none ml-3" title="Nova Tarefa">
+                            <a href="{{ route('task.create') }}" class="btn btn-primary btn-sm ml-3" title="Nova Tarefa">
                                 <i class="bi bi-clipboard-plus"></i>
                             </a>
-                            <a href="{{ route('task.export') }}" class="text-decoration-none ml-3" title="Exportar para Excel">
-                                <i class="bi bi-filetype-xlsx"></i>
-                            </a>
+
+                            <div class="dropdown">
+                                <button class="btn btn-success btn-sm ml-1" type="button" data-toggle="dropdown" aria-expanded="false" title="Exportar">
+                                    <i class="bi bi-download"></i>
+                                </button>
+
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ route('task.export', ['extension' => 'xlsx']) }}"><i class="bi bi-filetype-xlsx text-success"></i> Excel (.xlsx)</a>
+                                    <a class="dropdown-item" href="{{ route('task.export', ['extension' => 'csv']) }}"><i class="bi bi-filetype-csv text-success"></i> Excel (.csv)</a>
+                                    <a class="dropdown-item" href="{{ route('task.export', ['extension' => 'pdf']) }}"><i class="bi bi-filetype-pdf text-danger"></i> PDF</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
