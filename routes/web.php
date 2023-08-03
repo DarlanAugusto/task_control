@@ -26,6 +26,8 @@ Auth::routes(['verify' => true]);
 Route::middleware(['auth', 'verified'])->group(function() {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
+
+    Route::get('/task/export', [TaskController::class, 'export'])->name('task.export');
     Route::resource('/task', TaskController::class);
 
     Route::get('/test-message', function() {
@@ -33,6 +35,7 @@ Route::middleware(['auth', 'verified'])->group(function() {
 
         return "Email enviado com sucesso!";
     });
+
 
 });
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TasksExport;
 use App\Mail\DestroyTaskMail;
 use App\Mail\NewTaskMail;
 use App\Mail\UpTaskMail;
@@ -9,6 +10,7 @@ use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TaskController extends Controller
 {
@@ -104,5 +106,10 @@ class TaskController extends Controller
         Mail::to(Auth::user()->email)->send(new DestroyTaskMail($task));
 
         return redirect()->route('task.index');
+    }
+
+    public function export()
+    {
+        return Excel::download(new TasksExport, 'tasks_' . date('YmdHis') . '.xlsx');
     }
 }

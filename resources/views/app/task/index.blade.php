@@ -10,7 +10,7 @@
                         <span>
                             <i class="bi bi-list"></i> Tarefas
                         </span>
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center justify-content-between">
                             <nav aria-label="...">
                                 <ul class="pagination pagination-sm m-0">
                                     <li class="page-item @if($tasks->currentPage() == 1) disabled @endif" title="Primeira página (1)">
@@ -37,6 +37,9 @@
 
                             <a href="{{ route('task.create') }}" class="text-decoration-none ml-3" title="Nova Tarefa">
                                 <i class="bi bi-clipboard-plus"></i>
+                            </a>
+                            <a href="{{ route('task.export') }}" class="text-decoration-none ml-3" title="Exportar para Excel">
+                                <i class="bi bi-filetype-xlsx"></i>
                             </a>
                         </div>
                     </div>
