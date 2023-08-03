@@ -13,6 +13,6 @@ class TasksExport implements FromCollection
     */
     public function collection()
     {
-        return Task::where('user_id', Auth::user()->id)->get();
+        return Auth::user()->tasks()->get();
     }
 }
