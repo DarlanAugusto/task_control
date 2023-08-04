@@ -122,8 +122,13 @@ class TaskController extends Controller
 
     public function exportPdf()
     {
-        $tasks = Task::all();
+        $tasks = Auth::user()
+            ->tasks()
+            ->orderBy('deadline_date')
+            ->get();
+
         $pdf = Pdf::loadView('app.pdf.task', ['tasks' => $tasks]);
+        $pdf->setPaper('a4', 'landscape');
         return $pdf->stream('task_' . date('YmdHis') . '.pdf');
     }
 }
