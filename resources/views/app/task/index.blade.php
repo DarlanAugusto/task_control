@@ -47,7 +47,7 @@
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{ route('task.export', ['extension' => 'xlsx']) }}"><i class="bi bi-filetype-xlsx text-success"></i> Excel (.xlsx)</a>
                                     <a class="dropdown-item" href="{{ route('task.export', ['extension' => 'csv']) }}"><i class="bi bi-filetype-csv text-success"></i> Excel (.csv)</a>
-                                    <a class="dropdown-item" href="{{ route('task.export', ['extension' => 'pdf']) }}"><i class="bi bi-filetype-pdf text-danger"></i> PDF</a>
+                                    <a class="dropdown-item" href="{{ route('task.export.pdf') }}" target="_blank"><i class="bi bi-filetype-pdf text-danger"></i> PDF</a>
                                 </div>
                             </div>
                         </div>

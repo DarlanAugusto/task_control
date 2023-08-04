@@ -7,6 +7,7 @@ use App\Mail\DestroyTaskMail;
 use App\Mail\NewTaskMail;
 use App\Mail\UpTaskMail;
 use App\Models\Task;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -117,5 +118,12 @@ class TaskController extends Controller
         }
 
         return Excel::download(new TasksExport, 'tasks_' . date('YmdHis') . '.' . $extension);
+    }
+
+    public function exportPdf()
+    {
+        $tasks = Task::all();
+        $pdf = Pdf::loadView('app.pdf.task', ['tasks' => $tasks]);
+        return $pdf->stream('task_' . date('YmdHis') . '.pdf');
     }
 }
