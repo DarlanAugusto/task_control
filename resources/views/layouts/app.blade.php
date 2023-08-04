@@ -36,7 +36,7 @@
                     <ul class="navbar-nav mr-auto">
                         @auth
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                                     Tarefas
                                 </a>
                                 <div class="dropdown-menu">

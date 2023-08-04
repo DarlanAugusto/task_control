@@ -11,11 +11,11 @@
                             <i class="bi bi-clipboard-"></i> Editando - {{ $task->task }}
                         </span>
 
-                        <div class="d-flex justify-content-between aling-items-center">
-                            <a href="{{ route('task.create') }}" class="text-decoration-none ml-3" title="Nova Tarefa">
+                        <div class="btn-group btn-group-sm">
+                            <a href="{{ route('task.create') }}" class="btn btn-primary btn-sm" title="Nova Tarefa">
                                 <i class="bi bi-clipboard-plus"></i>
                             </a>
-                            <a href="{{ route('task.index') }}" class="text-decoration-none ml-3" title="Listar Tarefas">
+                            <a href="{{ route('task.index') }}" class="btn btn-primary btn-sm" title="Listar Tarefas">
                                 <i class="bi bi-list"></i>
                             </a>
                         </div>

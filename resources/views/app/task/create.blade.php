@@ -11,7 +11,7 @@
                             <i class="bi bi-clipboard-plus"></i> {{ __('Nova Tarefa') }}
                         </span>
 
-                        <a href="{{ route('task.index') }}" class="text-decoration-none ml-3" title="Listar tarefas">
+                        <a href="{{ route('task.index') }}" class="btn btn-primary btn-sm" title="Listar tarefas">
                             <i class="bi bi-list"></i>
                         </a>
                     </div>
